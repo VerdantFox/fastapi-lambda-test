@@ -1,3 +1,10 @@
-fastapi==0.63.0
-uvicorn==0.13.4
-mangum==0.11.0
+# requirements.txt: pinned src dependencies for production
+# This file is auto-generated. To regenerate: docker/update-requirements.sh
+anyio==3.4.0
+fastapi==0.70.1
+idna==3.3
+mangum==0.12.3
+pydantic==1.8.2
+sniffio==1.2.0
+starlette==0.16.0
+typing_extensions==4.0.1

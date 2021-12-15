@@ -1,4 +1,4 @@
-service: my-awesome-app
+service: fastapi-lambda-app
 projectDir: ./
 
 package:
@@ -6,33 +6,33 @@ package:
 
 provider:
   name: aws
-  runtime: python3.8
-  region: eu-west-1
+  runtime: python3.9
+  region: us-east-1
   stage: ${opt:stage, "dev"}
 
 plugins:
   - serverless-python-requirements
 
-# custom:
-#   pythonRequirements:
-#     dockerizePip: true
-#     layer:
-#       name: my-awesome-app-layer
-#       description: My awesome app layer
-#       compatibleRuntimes:
-#         - python3.8
+layers:
+  myprojWithDependencies:
+    package:
+      artifact: dist/myproj-lambda-layer.zip
+    description: The myproj package and its dependencies
+    compatibleRuntimes:
+      - python3.9
+
 
 functions:
   app:
     package:
       include:
-        - "api"
-
-    handler: api.main.handler
+        - "./api/main.py"
+    module: api
+    handler: main.handler
     environment:
       STAGE: ${self:provider.stage}
     layers:
-      - { Ref: PythonRequirementsLambdaLayer }
+      - { Ref: MyprojWithDependenciesLambdaLayer }
     events:
       - http:
           method: any

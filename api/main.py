@@ -1,5 +1,5 @@
 import os
-# from src import calculations
+from myproj import calculations
 
 from fastapi import FastAPI
 from mangum import Mangum
@@ -21,11 +21,11 @@ def do_something(name: str):
     return {"message": f"Hello {name}!"}
 
 
-# @app.get("/square/{num}")
-# def do_something(num: int):
-#     """Does a thing"""
-#     squared = calculations.square(num)
-#     return {"message": f"{num} squared is {squared}!"}
+@app.get("/square/{num}")
+def do_something(num: int):
+    """Does a thing"""
+    squared = calculations.square(num)
+    return {"message": f"{num} squared is {squared}!"}
 
 
 handler = Mangum(app)

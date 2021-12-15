@@ -1,0 +1,16 @@
+# pyproject.toml: unified Python project metadata and tool configuration file
+# See PEP-518: https://www.python.org/dev/peps/pep-0518/
+
+# Project Metadata
+# Reference: https://www.python.org/dev/peps/pep-0621/
+# Dependencies are specified in setup.cfg since setuptools does not support this file.
+[project]
+name = 'myproj'
+version = '1.0.0'
+description = 'Everything needed for myproj: ...'
+readme = 'README.md'
+requires-python = '>=3.9'
+
+[build-system]
+requires = ['setuptools', 'wheel']
+build-backend = 'setuptools.build_meta'

@@ -3,3 +3,5 @@ venv/
 node_modules/
 .serverless/
 tmp/
+myproj.egg-info/
+dist/
